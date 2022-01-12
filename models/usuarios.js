@@ -18,26 +18,26 @@ const usuariosQueries = {
     WHERE
       status = 1
     LIMIT
-     ?,?
+      ?, ?
   `,
   updateUsuario: `
     UPDATE
-      usuarios
+      usuarios 
     SET
       nombre=?,
       status=?
     WHERE
       email=?
   `,
-  deleteUsuarios: `
+  deleteUsuario: `
     UPDATE
       usuarios
     SET
       status=0
     WHERE
-    email=?
+      email=?
   `,
-  getUsuarioByemail: `
+  getUsuarioByEmail: `
     SELECT
       *
     FROM
@@ -50,3 +50,4 @@ const usuariosQueries = {
 };
 
 module.exports = usuariosQueries;
+
