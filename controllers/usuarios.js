@@ -11,7 +11,7 @@ const usuariosGet = async (req = request, res = response) => {
 
 
 
-  if(Number.isInteger(limite) || !Number.isInteger(desde)){
+  if(!Number.isInteger(limite) || !Number.isInteger(desde)){
     res.status(400).json({msg: "No se puede realizar esta consulta"});
     return;
   }
@@ -24,14 +24,14 @@ const usuariosGet = async (req = request, res = response) => {
     const usuarios = await conn.query(usuariosQueries.selectUsuarios, [
        desde, 
        limite,   
-    ]);
+    ]);    
 
     res.json({ usuarios });
   } catch (error) {
     console.log(error);
     res
       .status(500)
-      .json({ msg: "Por favor contacte al administrador.", error });
+      .json({ msg: "Por favor contacte al administrador.", error });    
   } finally {
     if (conn) conn.end();   
   }
@@ -157,4 +157,4 @@ module.exports = {
   usuariosPut,
   usuariosDelete,
   usuarioSignin,
-};   
+};       
